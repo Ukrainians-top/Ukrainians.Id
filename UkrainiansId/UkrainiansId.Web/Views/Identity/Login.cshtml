@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Login";
+    var providers = ViewBag.Providers as List<Microsoft.AspNetCore.Authentication.AuthenticationScheme>;
 }
 
 <h1>Login</h1>
@@ -28,15 +29,13 @@
     </div>
     <div>
         <div>
-            <div>
-                <a href="~/identity/google-login">Google</a>
-            </div>
-            <div>
-                <a href="~/identity/facebook-login">Facebook</a>
-            </div>
-            <div>
-                <a href="~/identity/microsoft-login">Microsoft</a>
-            </div>
+            @foreach(var provider in providers)
+            {
+                <div>
+                    <a class="btn btn-primary login-button" asp-action="SignIn" asp-route-provider="@provider.Name">@provider.DisplayName</a>
+                </div>
+                <br/>
+            }
         </div>
     </div>
 </div>

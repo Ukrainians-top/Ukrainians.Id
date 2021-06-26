@@ -3,68 +3,48 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
+using Microsoft.AspNetCore.Authentication.Twitter;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 namespace UkrainiansId.Web.Controllers
 {
     [AllowAnonymous, Route("identity")]
     public class IdentityController : Controller
     {
+        private readonly IAuthenticationSchemeProvider _schemeProvider;
+        public IdentityController(IAuthenticationSchemeProvider schemeProvider)
+        {
+            _schemeProvider = schemeProvider;
+        }
+
         [HttpGet("login")]
-        public IActionResult Login() => View();
+        public async Task<IActionResult> Login()
+        {
+            if (User.Identity.IsAuthenticated)
+                return LocalRedirect("~/");
+            ViewBag.Providers = (await _schemeProvider.GetAllSchemesAsync()).Where(x=> !string.IsNullOrEmpty(x.DisplayName)).OrderBy(x=>x.DisplayName).ToList();
+            return View();
+        }
 
         [HttpGet("logout")]
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            if (User.Identity.IsAuthenticated)
+                await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return LocalRedirect("/");
         }
 
-
-
-
-        [HttpGet("google-login")]
-        public IActionResult GoogleLogin()
+        public IActionResult SignIn(string provider)
         {
-            var props = new AuthenticationProperties { RedirectUri = Url.Action("GoogleResponse") };
-            return Challenge(props, GoogleDefaults.AuthenticationScheme);
+            if (User.Identity.IsAuthenticated)
+                return LocalRedirect("~/");
+            return Challenge(new AuthenticationProperties { RedirectUri = Url.Action("SignInResponse") }, provider);
         }
 
-        [Route("google-response")]
-        public async Task<IActionResult> GoogleResponse()
-        {
-            await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return LocalRedirect("/");
-        }
-
-
-
-        [HttpGet("facebook-login")]
-        public IActionResult FacebookLogin()
-        {
-            var props = new AuthenticationProperties { RedirectUri = Url.Action("FacebookResponse") };
-            return Challenge(props, FacebookDefaults.AuthenticationScheme);
-        }
-
-        [HttpGet("facebook-response")]
-        public async Task<IActionResult> FacebookResponse()
-        {
-            await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return LocalRedirect("/");
-        }
-
-
-
-        [HttpGet("microsoft-login")]
-        public IActionResult MicrosoftLogin()
-        {
-            var props = new AuthenticationProperties { RedirectUri = Url.Action("MicrosoftResponse") };
-            return Challenge(props, MicrosoftAccountDefaults.AuthenticationScheme);
-        }
-
-        [HttpGet("microsoft-response")]
-        public async Task<IActionResult> MicrosoftResponse()
+        [HttpGet("SignInResponse")]
+        public async Task<IActionResult> SignInResponse()
         {
             await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return LocalRedirect("/");
