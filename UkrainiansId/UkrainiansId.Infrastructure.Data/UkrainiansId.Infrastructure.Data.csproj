@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="EntityFramework\Configurations\" />
     <Folder Include="Repositories\Dapper\" />
   </ItemGroup>
 
