@@ -23,52 +23,22 @@ namespace UkrainiansId.Web
             })
             .AddCookie(opt =>
             {
-                opt.LoginPath = "/account/google-login";
-            })
-            .AddAmazon(options =>
-            {
-                options.ClientId = _configuration["Keys:Amazon:ClientId"];
-                options.ClientSecret = _configuration["Keys:Amazon:ClientSecret"];
-            })
-            .AddApple(options =>
-            {
-                options.ClientId = _configuration["Keys:Apple:ClientId"];
-                options.ClientSecret = _configuration["Keys:Apple:ClientSecret"];
-            })
-            .AddDiscord(options =>
-            {
-                options.ClientId = _configuration["Keys:Discord:ClientId"];
-                options.ClientSecret = _configuration["Keys:Discord:ClientSecret"];
+                opt.LoginPath = "/identity/login";
             })
             .AddFacebook(options =>
             {
-                options.ClientId = _configuration["Keys:Facebook:ClientId"];
-                options.ClientSecret = _configuration["Keys:Facebook:ClientSecret"];
+                options.AppId = _configuration["Keys:Facebook:ClientId"];
+                options.AppSecret = _configuration["Keys:Facebook:ClientSecret"];
             })
             .AddGoogle(options =>
             {
                 options.ClientId = _configuration["Keys:Google:ClientId"];
                 options.ClientSecret = _configuration["Keys:Google:ClientSecret"];
             })
-            .AddInstagram(options =>
+            .AddMicrosoftAccount(options =>
             {
-                options.ClientId = _configuration["Keys:Instagram:ClientId"];
-                options.ClientSecret = _configuration["Keys:Instagram:ClientSecret"];
-            })
-            .AddLinkedIn(options =>
-            {
-                options.ClientId = _configuration["Keys:LinkedIn:ClientId"];
-                options.ClientSecret = _configuration["Keys:LinkedIn:ClientSecret"];
-            })
-            .AddSpotify(options =>
-            {
-                options.ClientId = _configuration["Keys:Spotify:ClientId"];
-                options.ClientSecret = _configuration["Keys:Spotify:ClientSecret"];
-            })
-            .AddTwitch(options =>
-            {
-                options.ClientId = _configuration["Keys:Twitch:ClientId"];
-                options.ClientSecret = _configuration["Keys:Twitch:ClientSecret"];
+                options.ClientId = _configuration["Keys:Microsoft:ClientId"];
+                options.ClientSecret = _configuration["Keys:Microsoft:ClientSecret"];
             })
             .AddTwitter(options =>
             {
