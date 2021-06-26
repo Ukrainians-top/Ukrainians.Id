@@ -1,0 +1,11 @@
+﻿@model List<System.Security.Claims.Claim>
+@{
+    ViewData["Title"] = "Private";
+}
+
+<h1>Private</h1>
+
+@foreach(var claim in Model)
+{
+    <div>@claim.Type - @claim.Value</div>
+}

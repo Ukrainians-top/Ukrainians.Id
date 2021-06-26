@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using UkrainiansId.Web.Models;
 
 namespace UkrainiansId.Web.Controllers
@@ -23,10 +21,20 @@ namespace UkrainiansId.Web.Controllers
             return View();
         }
 
+        [Authorize]
+        [HttpGet("Privacy")]
         public IActionResult Privacy()
         {
             return View();
         }
+
+        [Authorize]
+        [HttpGet("Private")]
+        public IActionResult Private()
+        {
+            return View(User.Claims.ToList());
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

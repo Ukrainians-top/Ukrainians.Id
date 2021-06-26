@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -16,10 +17,13 @@ namespace UkrainiansId.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
             services.AddAuthentication(options =>
             {
-                options.DefaultAuthenticateScheme = "App";
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
+            .AddCookie(opt =>
+            {
+                opt.LoginPath = "/account/google-login";
             })
             .AddAmazon(options =>
             {
@@ -65,8 +69,13 @@ namespace UkrainiansId.Web
             {
                 options.ClientId = _configuration["Keys:Twitch:ClientId"];
                 options.ClientSecret = _configuration["Keys:Twitch:ClientSecret"];
+            })
+            .AddTwitter(options =>
+            {
+                options.ConsumerKey = _configuration["Keys:Twitter:ClientId"];
+                options.ConsumerSecret = _configuration["Keys:Twitter:ClientSecret"];
             });
-
+            services.AddControllersWithViews();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -84,7 +93,7 @@ namespace UkrainiansId.Web
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
