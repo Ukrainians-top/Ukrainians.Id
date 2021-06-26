@@ -2,11 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>c24ce148-ffc0-4f4a-ad6e-70b11a471530</UserSecretsId>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <UserSecretsId>a72151c4-7bc6-44e2-bbae-db9f6070ee90</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNet.Security.OAuth.Amazon" Version="5.0.7" />
+    <PackageReference Include="AspNet.Security.OAuth.Apple" Version="5.0.7" />
+    <PackageReference Include="AspNet.Security.OAuth.Discord" Version="5.0.7" />
+    <PackageReference Include="AspNet.Security.OAuth.Instagram" Version="5.0.7" />
+    <PackageReference Include="AspNet.Security.OAuth.LinkedIn" Version="5.0.7" />
+    <PackageReference Include="AspNet.Security.OAuth.Spotify" Version="5.0.7" />
+    <PackageReference Include="AspNet.Security.OAuth.Twitch" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.7" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.14" />
   </ItemGroup>
 

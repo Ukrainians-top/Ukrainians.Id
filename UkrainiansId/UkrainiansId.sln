@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UkrainiansId.Application", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UkrainiansId.Infrastructure.IoC", "UkrainiansId.Infrastructure.IoC\UkrainiansId.Infrastructure.IoC.csproj", "{B463850A-4726-4E1C-8D2E-A8841EB885D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UkrainiansId.Web", "UkrainiansId.Web\UkrainiansId.Web.csproj", "{116360A3-9BC0-4628-A573-D27C931574D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UkrainiansId.Web", "UkrainiansId.Web\UkrainiansId.Web.csproj", "{8F175706-4E68-421F-A7D8-6DC36A60EAA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{B463850A-4726-4E1C-8D2E-A8841EB885D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B463850A-4726-4E1C-8D2E-A8841EB885D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B463850A-4726-4E1C-8D2E-A8841EB885D5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{116360A3-9BC0-4628-A573-D27C931574D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{116360A3-9BC0-4628-A573-D27C931574D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{116360A3-9BC0-4628-A573-D27C931574D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{116360A3-9BC0-4628-A573-D27C931574D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F175706-4E68-421F-A7D8-6DC36A60EAA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F175706-4E68-421F-A7D8-6DC36A60EAA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F175706-4E68-421F-A7D8-6DC36A60EAA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F175706-4E68-421F-A7D8-6DC36A60EAA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
