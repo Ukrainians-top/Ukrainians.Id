@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.Facebook;
-using Microsoft.AspNetCore.Authentication.Google;
-using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
-using Microsoft.AspNetCore.Authentication.Twitter;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using UkrainiansId.Web.Models;
+
 namespace UkrainiansId.Web.Controllers
 {
     [AllowAnonymous, Route("identity")]
@@ -46,8 +46,22 @@ namespace UkrainiansId.Web.Controllers
         [HttpGet("SignInResponse")]
         public async Task<IActionResult> SignInResponse()
         {
-            await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            var claims = result.Principal.Claims;
             return LocalRedirect("/");
+        }
+
+        [NonAction]
+        private TestUser GetUser(IEnumerable<Claim> claims)
+        {
+            return new TestUser
+            {
+                Id = claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value,
+                Email = claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value,
+                FullName = claims.FirstOrDefault(x => x.Type == ClaimTypes.Name).Value,
+                Firstname = claims.FirstOrDefault(x => x.Type == ClaimTypes.GivenName).Value,
+                Lastname = claims.FirstOrDefault(x => x.Type == ClaimTypes.Surname).Value,
+            };
         }
     }
 }
