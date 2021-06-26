@@ -3,17 +3,17 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using UkrainiansId.Domain.Models;
 namespace UkrainiansId.Infrastructure.Data.EntityFramework.Configurations
 {
-    public class UserConfiguration : IEntityTypeConfiguration<User>
+    public class AppConfiguration : IEntityTypeConfiguration<App>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<App> builder)
         {
             builder.HasKey(x => x.Id);
             builder.HasIndex(x => new
             {
-                x.UserName,
-                x.FirstName,
-                x.LastName,
-                x.CreatedAt
+                x.Name,
+                x.ClientId,
+                x.ClientSecret,
+                x.ClientSecretIsRequired
             });
         }
     }
