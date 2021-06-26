@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31410.414
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UkrainiansId.Domain", "UkrainiansId.Domain\UkrainiansId.Domain.csproj", "{23EA5B03-C0D4-4BF2-8102-B7C1670390EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UkrainiansId.Infrastructure.Data", "UkrainiansId.Infrastructure.Data\UkrainiansId.Infrastructure.Data.csproj", "{0B050800-E559-453D-8070-96D9352CE764}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{23EA5B03-C0D4-4BF2-8102-B7C1670390EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23EA5B03-C0D4-4BF2-8102-B7C1670390EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23EA5B03-C0D4-4BF2-8102-B7C1670390EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B050800-E559-453D-8070-96D9352CE764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B050800-E559-453D-8070-96D9352CE764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B050800-E559-453D-8070-96D9352CE764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B050800-E559-453D-8070-96D9352CE764}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
