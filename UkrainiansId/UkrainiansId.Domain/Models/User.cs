@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 namespace UkrainiansId.Domain.Models
 {
     public class User : BaseModel<int>
@@ -10,6 +11,9 @@ namespace UkrainiansId.Domain.Models
         [MinLength(3), MaxLength(25)]
         public string UserName { get; set; }
         [MinLength(5), MaxLength(1000)]
-        public string PathToPicture { get; set; }
+        public string PathToPicture { get ; set; }
+        [Required, MinLength(2), MaxLength(50)]
+        public string TypeRegister { get; set; }
+        public List<AuthenticationData> AuthenticationData { get; set; }
     }
 }

@@ -6,6 +6,7 @@ namespace UkrainiansId.Infrastructure.Data.EntityFramework.Context
     public class UkrainiansIdContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<AuthenticationData> AuthenticationData { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
